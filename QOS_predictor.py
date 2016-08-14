@@ -23,7 +23,7 @@ import csv
 
 	#################### ************************* ######################
 		
-with open('mos-2G-Sousse.csv', "r") as fsrce:
+with open('dataset/mos-2G-Sousse.csv', "r") as fsrce:
     with open ('mos_2G_extract.csv', "w") as fdest:
 	 my_reader = csv.reader(fsrce, delimiter = ';')
 	 my_writer = csv.writer(fdest, delimiter = ';')
