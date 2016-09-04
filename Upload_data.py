@@ -29,7 +29,7 @@ with open('dataset/MOS.csv', "r") as fsrce:
         my_reader=csv.reader(fsrce, delimiter=';')
         my_writer = csv.writer(fdest, delimiter = ';')
         for row in my_reader:
-            print row[1]
+            my_writer.writerow (row[1])
 
 
 
