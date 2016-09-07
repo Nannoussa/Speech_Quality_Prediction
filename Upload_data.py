@@ -23,14 +23,19 @@ import csv
 
 	#################### ************************* ######################
 		
-with open('dataset/MOS.csv', "r") as fsrce:
-    with open ('mos_2G_extract.csv', "w") as fdest:
+with open('dataset/MOS.csv', "rb") as fsrce:
+    with open ('MOS_EXT.csv', "wb") as fdest:
         #my_reader= csv.DictReader(fsrce)
-        my_reader=csv.reader(fsrce, delimiter=';')
-        my_writer = csv.writer(fdest, delimiter = ';')
-        for row in my_reader:
-            my_writer.writerow (row[1])
-
+        reader=csv.reader(fsrce, delimiter=';')
+        writer = csv.writer(fdest,delimiter='',quotechar='"', quoting=csv.QUOTE_ALL)
+ #       headers=[Rxlev,RXQ_sub,MOS]
+        for row in reader:
+            #print (row[1],row[8],row[15])
+            writer.writerows ([row[1]])
+            writer.writerows ([row[8]])
+            writer.writerows ([row[15]])
+fsrce.close()
+fdest.close()
 
 
 
