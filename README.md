@@ -1,2 +1,2 @@
-# QOS Predictor Project
+# Speech Quality Prediction Project
 
