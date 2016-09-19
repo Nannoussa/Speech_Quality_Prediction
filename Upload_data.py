@@ -1,41 +1,26 @@
 ###
-# Fichier: QOS_prdictor.py
+# Fichier: Upload&Extract_Data.py
 ####
 
-import csv 
- #fname ='mos-2G-Sousse.csv'
-#file = open(fname, 'rb')
+from pyexcel.cookbook import merge_all_to_a_book
+import glob
+import csv
 
 
-
-#extract_list=[]
-
-#fdata= list(freader)
-#print (fdata)
-#try:
-	#freader = csv.reader(open(file, 'rU'), dialect=csv.excel_tab)
-	#for row in freader:
-		#three_rows = print (row[0], row[1], row[8])
-		#extract_list
-	#print (extract_list)
-#finally:
-	#file.close()
-
-	#################### ************************* ######################
-		
-with open('dataset/MOS.csv', "rb") as fsrce:
+with open('dataset/MOS_Test.csv', "rb") as fsrce:
     with open ('MOS_EXT.csv', "wb") as fdest:
-        #my_reader= csv.DictReader(fsrce)
         reader=csv.reader(fsrce, delimiter=';')
-        writer = csv.writer(fdest,delimiter='',quotechar='"', quoting=csv.QUOTE_ALL)
+        writer = csv.writer(fdest,delimiter='|',lineterminator = "\n" )
  #       headers=[Rxlev,RXQ_sub,MOS]
-        for row in reader:
+        for line in reader:
             #print (row[1],row[8],row[15])
-            writer.writerows ([row[1]])
-            writer.writerows ([row[8]])
-            writer.writerows ([row[15]])
+            writer.writerow ([line[1],line[8],line[15]])
+            merge_all_to_a_book(glob.glob("MOS_EXT.csv"), "MOS_EXT.xls")
 fsrce.close()
 fdest.close()
+
+
+
 
 
 
